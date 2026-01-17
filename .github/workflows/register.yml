@@ -57,7 +57,7 @@ jobs:
       - name: 运行注册机
         env:
           # 手动触发使用输入值，定时触发默认注册2个账号
-          REGISTER_COUNT: ${{ github.event.inputs.count || '2' }}
+          REGISTER_COUNT: ${{ github.event.inputs.count || '1' }}
           CONCURRENT: ${{ github.event.inputs.concurrent || '1' }}
         run: python register.py
       
