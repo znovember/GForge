@@ -126,7 +126,7 @@ class EmailManager:
         
         return None, None
     
-    def check_verification_code(self, email: str, max_retries: int = 20) -> Optional[str]:
+    def check_verification_code(self, email: str, max_retries: int = 30) -> Optional[str]:
         """检查验证码"""
         # 动态更新代理设置
         self._update_proxy()
@@ -158,10 +158,10 @@ class EmailManager:
                                     return code
                 
                 logger.info(f"等待验证码... ({i+1}/{max_retries})")
-                time.sleep(3)
+                time.sleep(5)
             except Exception as e:
                 logger.warning(f"检查验证码错误: {e}")
-                time.sleep(3)
+                time.sleep(5)
         
         return None
 
