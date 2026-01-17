@@ -126,7 +126,7 @@ class EmailManager:
         
         return None, None
     
-    def check_verification_code(self, email: str, max_retries: int = 30) -> Optional[str]:
+    def check_verification_code(self, email: str, max_retries: int = 40) -> Optional[str]:
         """检查验证码"""
         # 动态更新代理设置
         self._update_proxy()
@@ -235,7 +235,7 @@ class GeminiRegistrar:
                 
                 # 6. 获取验证码
                 logger.info("正在等待验证码...")
-                code = self.email_manager.check_verification_code(email)
+                code = self.email_manager.check_verification_code(email, max_retries=40)
                 if not code:
                     raise Exception("未收到验证码")
                 
